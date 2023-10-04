@@ -7,7 +7,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Denys\\KafkaQueue\\": "src/"
+            "DiKay\\Kafka\\": "src/"
         }
     },
     "authors": [
@@ -19,7 +19,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Kafka\\KafkaServiceProvider"
+                "DiKay\\Kafka\\KafkaServiceProvider"
             ]
         }
     }
