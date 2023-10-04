@@ -24,6 +24,6 @@ class KafkaServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__."/../../config/kafka.php" => config_path('kafka.php'),
-        ], 'laravel-kafka-config');
+        ], 'kafka-queue-config');
     }
 }
