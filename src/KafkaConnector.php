@@ -28,6 +28,9 @@ class KafkaConnector implements ConnectorInterface
                 $config['security_protocol'],
             ))
             ->withHandler(function(KafkaConsumerMessage $message) {
+                $job = unserialize($message->getBody());
+                $job->handle();
+
                 $mes = is_string($message->getBody()) ? $message->getBody() : json_encode($message->getBody()) ;
                 Log::info('Consumed message: ' . $mes);
                 echo "Consumed message: $mes\n";
