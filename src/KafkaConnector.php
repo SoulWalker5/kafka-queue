@@ -12,20 +12,20 @@ class KafkaConnector implements ConnectorInterface
 {
     public function connect(array $config)
     {
-        $producer = Kafka::publishOn(config('kafka.topics')[0])
+        $producer = Kafka::publishOn($config['bootstrap_servers'])
             ->withSasl(new Sasl(
-                config('kafka.username'),
-                config('kafka.password'),
-                config('kafka.mechanism'),
-                config('kafka.security_protocol'),
+                $config['sasl_username'],
+                $config['sasl_password'],
+                $config['sasl_mechanism'],
+                $config['security_protocol'],
             ));
 
-        $consumer = Kafka::createConsumer(config('kafka.topics'))
+        $consumer = Kafka::createConsumer($config['bootstrap_servers'])
             ->withSasl(new Sasl(
-                config('kafka.username'),
-                config('kafka.password'),
-                config('kafka.mechanism'),
-                config('kafka.security_protocol'),
+                $config['sasl_username'],
+                $config['sasl_password'],
+                $config['sasl_mechanism'],
+                $config['security_protocol'],
             ))
             ->withHandler(function(KafkaConsumerMessage $message) {
                 $mes = is_string($message->getBody()) ? $message->getBody() : json_encode($message->getBody()) ;
