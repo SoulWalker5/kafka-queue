@@ -12,7 +12,7 @@ class KafkaConnector implements ConnectorInterface
 {
     public function connect(array $config)
     {
-        $producer = Kafka::publishOn($config['bootstrap_servers'])
+        $producer = Kafka::publishOn($config['queue'], $config['bootstrap_servers'])
             ->withSasl(new Sasl(
                 $config['sasl_username'],
                 $config['sasl_password'],
@@ -20,7 +20,7 @@ class KafkaConnector implements ConnectorInterface
                 $config['security_protocol'],
             ));
 
-        $consumer = Kafka::createConsumer($config['bootstrap_servers'])
+        $consumer = Kafka::createConsumer([$config['bootstrap_servers']])
             ->withSasl(new Sasl(
                 $config['sasl_username'],
                 $config['sasl_password'],
