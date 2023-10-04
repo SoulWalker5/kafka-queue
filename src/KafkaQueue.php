@@ -1,6 +1,6 @@
 <?php
 
-namespace Kafka;
+namespace DiKay\Kafka;
 
 use Carbon\Exceptions\Exception as CarbonException;
 use Exception;

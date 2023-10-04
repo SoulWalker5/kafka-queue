@@ -1,6 +1,6 @@
 <?php
 
-namespace Kafka;
+namespace DiKay\Kafka;
 
 use Illuminate\Queue\Connectors\ConnectorInterface;
 use Illuminate\Support\Facades\Log;
